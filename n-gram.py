@@ -20,15 +20,23 @@ def create_bigram(lines):
                 bigram[key] = {line[i+1]:1}
     return bigram
 
-def generate_predication(bigram, start):
-    print('TODO: THis will generate the predition')
-    return "TODO: This is it!"
+def generate_sentence(bigram, start):
+    sentence = [start]
+    key = start
+    while len(sentence) < 20:
+        if key in bigram:
+            next_word = max(bigram[key], key=bigram[key].get)
+            sentence.append(next_word)
+            key = next_word
+        else:
+            break
+    return ' '.join(sentence)
 
 
 def main():
     lines = read_file('toy-corpus.txt')
     bigram = create_bigram(lines)
-    prediction = generate_predication(bigram, "Technlogy")
+    prediction = generate_sentence(bigram, "Technology")
     print(prediction)
 
 main()
