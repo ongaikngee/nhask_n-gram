@@ -1,21 +1,23 @@
 # read from corpus
-def get_lines():
-    print('Will get line here and return an list of list')
-    return [["This is an example"], ["This is another example"]]
+def read_file(path):
+    with open(path, 'r') as f:
+        lines = f.read().split('\n')
+    lines = [x.split(' ') for x in lines]
+    return lines
 
 # create bigram
 def create_bigram(lines):
-    print('This is create biagram and will return a dict of dict')
+    print('TODO: This is create biagram and will return a dict of dict')
     return [{"this":{"is":1, "will":2}}, {"is": {"create":1}}]
 
 
 def generate_predication(bigram, start):
-    print('THis will generate the predition')
-    return "This is it!"
+    print('TODO: THis will generate the predition')
+    return "TODO: This is it!"
 
 
 def main():
-    lines = get_lines()
+    lines = read_file('toy-corpus.txt')
     bigram = create_bigram(lines)
     prediction = generate_predication(bigram, "Technlogy")
     print(prediction)
