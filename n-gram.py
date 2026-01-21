@@ -7,9 +7,18 @@ def read_file(path):
 
 # create bigram
 def create_bigram(lines):
-    print('TODO: This is create biagram and will return a dict of dict')
-    return [{"this":{"is":1, "will":2}}, {"is": {"create":1}}]
-
+    bigram = {}
+    for line in lines:
+        for i in range(len(line)-1):
+            key = line[i]
+            if key in bigram:
+                if line[i+1] in bigram[key]:
+                    bigram[key][line[i+1]] += 1
+                else:
+                    bigram[key][line[i+1]] = 1
+            else:
+                bigram[key] = {line[i+1]:1}
+    return bigram
 
 def generate_predication(bigram, start):
     print('TODO: THis will generate the predition')
